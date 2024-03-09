@@ -4,5 +4,5 @@ module.exports = {
         commonjs: true,
         es2021: true,
     },
-    extends: ['eslint:recommended', 'prettier'],
+    extends: ['eslint:recommended', 'prettier', "parser:babel-eslint"],
 }
