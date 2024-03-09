@@ -10,11 +10,11 @@ exports.create = async (req, res, next) => {
         const contactService = new ContactService(MongoDB.client);
         const document = await contactService.create(req.body);
         return res.send(document);
-    } catch (error) {   
+    } catch (error) {
         return next(
             new ApiError(500, "An error occurred while creating the contact")
         );
-    }   
+    }
 };
 exports.findAll = async (req, res, next) => {
     let documents = [];
@@ -87,16 +87,13 @@ exports.delete = async (req, res, next) => {
 exports.deleteAll = async (_req, res, next) => {
     try {
         const contactService = new ContactService(MongoDB.client);
-        const document = await contactService.deleteAll();
+        const deletedCount = await contactService.deleteAll();
         return res.send({
-            message: `${deleteCound} contacts were deleted successfully`,
+            message: `${deletedCount} contacts were deleted successfully`,
         });
     } catch (error) {
         return next(
-            new ApiError(
-                500,
-                "An error occured while removing all contacs"
-            )
+            new ApiError(500, "An error occured while removing all contacs")
         );
     }
 };
