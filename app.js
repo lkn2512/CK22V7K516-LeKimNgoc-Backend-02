@@ -7,8 +7,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res)=>{
-    res.json({message: "Welcome to contact book application."});
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to contact book application." });
 });
 app.use("/api/contacts", contactsRouter);
 // handle 404 response
@@ -22,7 +22,7 @@ app.use((err, req, res, next) => {
     // Middleware xử lý lỗi tập trung.
     // Trong các đoạn code xử lý ở các route, gọi next(error) sẽ chuyển về middleware xử lý lỗi này
     return res.status(err.statusCode || 500).json({
-    message: err.message || "Internal Server Error",
+        message: err.message || "Internal Server Error",
     });
 });
 
